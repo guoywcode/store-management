@@ -1,0 +1,8 @@
+.*
+*.iml
+!.gitignore
+log
+target
+uploads
+flash-tool
+*-local.*

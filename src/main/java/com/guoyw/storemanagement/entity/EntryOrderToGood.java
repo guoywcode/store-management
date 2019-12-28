@@ -13,28 +13,27 @@ import javax.persistence.*;
  * create: 2019-12-23 18:21
  **/
 @Entity
-@Table(name = "sales_order_to_good", indexes = {
-  @Index(name = "sales_order_to_good", columnList = "salesOrderId,goodId")
+@Table(name = "entry_order_to_good", indexes = {
+  @Index(name = "entry_order_to_good", columnList = "entryOrderId,goodId")
 })
-@IdClass(SalesOrderToGoodID.class)
+@IdClass(EntryOrderToGoodID.class)
 @Data
 @Accessors(chain = true)
-@ApiModel(description = "销售单-商品")
-public class SalesOrderToGood extends BaseEntity{
-  
+@ApiModel(description = "进货单-商品")
+public class EntryOrderToGood extends BaseEntity{
   @Id
   @Column(length = 20)
-  @ApiModelProperty("销售订单Id")
-  private String salesOrderId;
+  @ApiModelProperty("进货订单Id")
+  private String entryOrderId;
   
   @Id
   @Column(length = 20)
   @ApiModelProperty("商品Id")
   private String goodId;
 
-  @ApiModelProperty("销售数量")
+  @ApiModelProperty("进货数量")
   @Column
-  private Long salesVolume;
+  private Long entryVolume;
 
   @Column(length = 50)
   @ApiModelProperty(value = "冗余-商品名称")
@@ -49,8 +48,12 @@ public class SalesOrderToGood extends BaseEntity{
   private String goodUnit;
 
   @Column(length = 20)
-  @ApiModelProperty(value = "冗余-零售价格")
-  private String salePrice ;
-
-
+  @ApiModelProperty(value = "进货价格")
+  private String entryPrice;
+  
+  @Column(length = 20)
+  @ApiModelProperty(value = "供货商Id")
+  private String supplierId;
+  
+  
 }

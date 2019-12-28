@@ -26,9 +26,9 @@ import javax.persistence.Table;
 @ApiModel(description = "销售订单")
 public class SalesOrder extends IdBaseEntity{
   
-  @Column
+  @Column(length = 20)
   @ApiModelProperty(value = "操作者id")
-  private Long operatorId;
+  private String operatorId;
   
   @Column(length = 25)
   @ApiModelProperty(value = "冗余-操作者真实姓名")
@@ -62,9 +62,9 @@ public class SalesOrder extends IdBaseEntity{
   @ApiModelProperty(value = "欠款金额")
   private float debtSum;
   
-  @Column
+  @Column(length = 20)
   @ApiModelProperty(value = "购买客户Id")
-  private Long customerPurchasesId;
+  private String customerPurchasesId;
   
   @Column(length = 25)
   @ApiModelProperty(value = "冗余-购买客户真实姓名")

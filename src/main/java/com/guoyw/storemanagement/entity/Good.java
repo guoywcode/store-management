@@ -40,14 +40,14 @@ public class Good extends IdBaseEntity{
   
   @Column(length = 20)
   @ApiModelProperty(value = "商品库存数量")
-  private String goodNum;
+  private long goodNum;
   
-  @Column(length = 20)
+  @Column
   @ApiModelProperty(value = "进货价格")
-  private String entryPrice ;
+  private float entryPrice;
   
-  @Column(length = 20)
+  @Column
   @ApiModelProperty(value = "零售价格")
-  private String salePrice ;
+  private float salePrice;
   
 }

@@ -5,12 +5,14 @@ import com.guoyw.storemanagement.entity.Good;
 import com.guoyw.storemanagement.entity.User;
 import com.guoyw.storemanagement.exception.StoreManagementException;
 import com.guoyw.storemanagement.service.UserService;
+import com.guoyw.storemanagement.vo.LoginVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -27,7 +29,8 @@ public class LoginController{
   
   @PostMapping()
   @ApiOperation("登陆")
-  public String login(@RequestBody @Validated LoginDto loginDto){
+  public LoginVo login(@RequestBody @Validated LoginDto loginDto){
+    LoginVo loginVo = new LoginVo();
     
     User user = userService.getByUserName(loginDto.getUsername());
     if(user == null)
@@ -37,9 +40,13 @@ public class LoginController{
       throw new StoreManagementException("LOGIN-00002");
     
     String token = UUID.randomUUID().toString().replace("-", "");
-    user.setToken(token);
+    user.setToken(token)
+      .setLastLoginTime(new Date().getTime());
     userService.update(user);
+  
+    loginVo.setToken(token)
+      .setUser(user);
     
-    return token;
+    return loginVo;
   }
 }

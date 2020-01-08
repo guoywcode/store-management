@@ -35,4 +35,5 @@ public class UserController extends IdBaseController<User>{
   public List<User> getListByRole(String role){
     return userService.getAllByRole(role);
   }
+  
 }

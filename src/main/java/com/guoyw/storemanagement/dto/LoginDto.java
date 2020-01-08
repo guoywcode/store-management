@@ -19,13 +19,11 @@ public class LoginDto{
   
   @NotEmpty
   @NotNull
-  @Min(5)
   @ApiModelProperty(value = "用户名")
   private String username;
   
   @NotEmpty
   @NotNull
-  @Min(5)
   @ApiModelProperty(value = "密码")
   private String password;
 }

@@ -32,6 +32,7 @@ public class User extends IdBaseEntity{
   private String userName;
   
   @Column(length = 32)
+  @JsonIgnore
   @ApiModelProperty(value = "密码")
   private String password;
   
